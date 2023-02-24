@@ -20,6 +20,7 @@ class DemoApp extends StatelessWidget {
       themeMode: ThemeMode.light,
       theme: MyTheme.lightTheme(context),
       darkTheme: MyTheme.darkTheme(context),
+      debugShowCheckedModeBanner: false,
       initialRoute: MyRoutes.HomePage,
       routes: {
         "": (context) => LoginPage(),
