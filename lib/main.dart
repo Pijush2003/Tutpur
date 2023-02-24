@@ -16,13 +16,14 @@ class DemoApp extends StatelessWidget {
       //home: HomePage(),
       themeMode: ThemeMode.light,
       theme: ThemeData(
-        primarySwatch: Colors.purple,
+        primarySwatch: Colors.deepPurple,
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
       ),
+      initialRoute: MyRoutes.HomePage,
       routes: {
-        "/": (context) => LoginPage(),
+        "": (context) => LoginPage(),
         MyRoutes.HomePage: (context) => HomePage(),
         MyRoutes.LoginPage: (context) => LoginPage()
       },
