@@ -2,18 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo/utlies/routes.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
   @override
-  _LoginPageState createState() => _LoginPageState();
+  State<LoginPage> createState()=>_LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
   String name = "";
   bool changeButton = false;
 
-  final _formkey = GlobalKey();
+  final _formkey = GlobalKey<FormState>();
 
-  movetoHome(BuildContext context) async {
-    // if (_formkey.currentState!.validate()) {
+  moveToHome(BuildContext context) async {
+    if (_formkey.currentState!.validate()) {
       setState(() {
         changeButton = true;
       });
@@ -22,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
       setState(() {
         changeButton = false;
       });
-    
+    }
   }
 
   @override
@@ -59,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
                         labelText: "Username",
                       ),
                       validator: (value) {
-                        if (value == null || value.isEmpty) {
+                        if (value!.isEmpty) {
                           return "Username is Required";
                         }
                         return null;
@@ -76,8 +77,8 @@ class _LoginPageState extends State<LoginPage> {
                         labelText: "Password",
                       ),
                       validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return "Username is Required";
+                        if (value!.isEmpty) {
+                          return "Password is Required";
                         } else if (value.length < 8) {
                           return "Characters must be 8";
                         }
@@ -92,7 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                           BorderRadius.circular(changeButton ? 50 : 8),
                       child: InkWell(
                         // splashColor: Colors.red,
-                        onTap: () => movetoHome(context),
+                        onTap: () => moveToHome(context),
                         child: AnimatedContainer(
                           duration: Duration(seconds: 1),
                           width: changeButton ? 50 : 150,
